@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Simple polling site{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <h1>Simple polling site</h1>
+      {% if user.is_authenticated %}
+        logged in as {{ user.username }}<p>
+        <a href="{% url 'polls:logout' %}">logout</a>
+      {% else %}
+        <a href="{% url 'polls:login' %}">login</a> / <a href="{% url 'polls:signup' %}">signup</a>
+      {% endif %}
+      <hr>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>
+
