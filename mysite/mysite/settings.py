@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+# Enable the below for HTTPS
+#    'sslserver',
 ]
 
 MIDDLEWARE = [
@@ -47,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -105,3 +107,6 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL='/polls/'
 LOGIN_URL='/polls/login'
+
+# Enable the below for HTTPS
+# SECURE_SSL_REDIRECT = True
