@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.views import generic
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from .models import Choice, Question
 
@@ -32,13 +34,13 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return(redirect('/polls'))
+            return(redirect('polls:index'))
     else:
         form = UserCreationForm()
     return render(request, 'polls/signup.html', {'form':form}) 
 
-
-
+@csrf_exempt
+#@login_required
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
